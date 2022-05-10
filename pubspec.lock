@@ -7,7 +7,7 @@ packages:
       name: am_state
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "2.0.1"
   animated_text_kit:
     dependency: "direct main"
     description:
@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  desktop_webview_window:
+    dependency: "direct main"
+    description:
+      name: desktop_webview_window
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.6"
   fake_async:
     dependency: transitive
     description:

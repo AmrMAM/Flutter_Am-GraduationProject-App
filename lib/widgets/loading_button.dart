@@ -1,3 +1,10 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : [AmLoadingButton] Widget                                                                           ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'dart:async';
 
 import 'package:am_state/am_state.dart';
@@ -17,14 +24,15 @@ class LoadingData {
   LoadingData({required this.loading, required this.size});
 }
 
-class LoadingButton extends StatelessWidget {
-  const LoadingButton({
+class AmLoadingButton extends StatelessWidget {
+  const AmLoadingButton({
     Key? key,
     this.backgroundColor,
     required this.child,
     required this.onTap,
     this.horizontalPadding = 25,
     this.verticalPadding = 10,
+    this.enabled = true,
   }) : super(key: key);
 
   final FutureOr Function() onTap;
@@ -32,7 +40,7 @@ class LoadingButton extends StatelessWidget {
   final Color? backgroundColor;
   final double horizontalPadding;
   final double verticalPadding;
-
+  final bool enabled;
   @override
   Widget build(BuildContext context) {
     final _loadingProvider = AmDataProvider<bool>(
@@ -46,17 +54,17 @@ class LoadingButton extends StatelessWidget {
       _loadingProvider.data = false;
     }
 
-    _insideBuild() {
+    _insideBuild(val) {
       return AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
-        child: _loadingProvider.data!
-            ? Center(
+        child: val!
+            ? const Center(
                 child: CircularProgressIndicator(
-                  color: backgroundColor ?? theme.colorScheme.secondary,
-                ),
+                    // color: backgroundColor ?? theme.colorScheme.secondary,
+                    ),
               )
             : ElevatedButton(
-                onPressed: _process,
+                onPressed: enabled == true ? _process : null,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: horizontalPadding,
@@ -67,9 +75,9 @@ class LoadingButton extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                         backgroundColor ?? theme.colorScheme.secondary),
-                    elevation: MaterialStateProperty.all(5),
-                    textStyle: MaterialStateProperty.all(
-                        theme.textTheme.button!.copyWith(fontSize: 18)),
+                    // elevation: MaterialStateProperty.all(5),
+                    // textStyle: MaterialStateProperty.all(
+                    //     theme.textTheme.button!.copyWith(fontSize: 18)),
                     shape: MaterialStateProperty.all((RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20))))),
               ),
@@ -81,7 +89,7 @@ class LoadingButton extends StatelessWidget {
       height: 65, // width: _loadingProvider.data!.size.width,
       child: AmRefreshWidget<bool>(
         amDataProvider: _loadingProvider,
-        builder: (ctx, value) => _insideBuild(),
+        builder: (ctx, val) => _insideBuild(val),
       ),
     );
   }

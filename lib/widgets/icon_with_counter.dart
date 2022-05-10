@@ -1,8 +1,13 @@
-// import '../statics/theme.dart';
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : [AmIconWithCounter] Widget                                                                         ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
 import 'package:flutter/material.dart';
 
-class IconWithCounter extends StatelessWidget {
-  const IconWithCounter({
+class AmIconWithCounter extends StatelessWidget {
+  const AmIconWithCounter({
     Key? key,
     required this.icon,
     this.noOfItems = 0,

@@ -1,11 +1,16 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : [AmAnimatedPage] Widget                                                                            ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'package:am_state/am_state.dart';
 
 import 'package:flutter/material.dart';
 
-import '../statics/screen_size.dart';
-
-class AnimatedPage extends StatelessWidget {
-  const AnimatedPage({
+class AmAnimatedPage extends StatelessWidget {
+  const AmAnimatedPage({
     Key? key,
     required this.scaffold,
     required this.uniqueId,
@@ -35,19 +40,19 @@ class AnimatedPage extends StatelessWidget {
         amDataProvider: animationProvider,
         builder: (ctx, value) {
           if (animationProvider.data! == minHeight) {
-            animationProvider.data = ScreenSize.screenHeight!;
+            animationProvider.data = MediaQuery.of(context).size.height;
           }
           return AnimatedContainer(
             duration: duration ?? const Duration(seconds: 1),
             curve: curve ?? Curves.bounceOut,
             constraints: BoxConstraints.loose(
-              Size.fromHeight(ScreenSize.screenHeight!),
+              Size.fromHeight(MediaQuery.of(context).size.height),
             ),
             height: value,
             child: SingleChildScrollView(
               physics: const NeverScrollableScrollPhysics(),
               child: SizedBox(
-                height: ScreenSize.screenHeight,
+                height: MediaQuery.of(context).size.height,
                 child: scaffold,
               ),
             ),

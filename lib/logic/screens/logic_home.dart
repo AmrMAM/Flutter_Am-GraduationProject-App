@@ -1,10 +1,18 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : Home Page (Logic)                                                                                  ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'package:am_industrial4/apis/api_providers.dart';
-import 'package:am_industrial4/apis/api_sevices.dart';
 import 'package:am_industrial4/apis/apis.dart';
-import 'package:am_industrial4/logic/screens/logic_node-red.dart';
-import 'package:am_industrial4/logic/screens/logic_node-red_dashboard.dart';
-import 'package:am_industrial4/screens/node-red/node-red.dart';
-import 'package:am_industrial4/screens/node-red_dashboard/node-red_dashboard.dart';
+import 'package:am_industrial4/logic/screens/logic_control_panel.dart';
+import 'package:am_industrial4/logic/screens/logic_nodered.dart';
+import 'package:am_industrial4/logic/screens/logic_nodered_dashboard.dart';
+import 'package:am_industrial4/screens/control_panel/control_panel.dart';
+import 'package:am_industrial4/screens/node-red/nodered.dart';
+import 'package:am_industrial4/screens/node-red_dashboard/nodered_dashboard.dart';
 import 'package:am_state/am_state.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -19,33 +27,14 @@ class LogicHomeScreen {
   bool forceAnimation = true;
 
   //==========================[Providers]=======================================
-  final providerIsConnected = AmDataProvider<bool>(initialData: false);
 
   //==========================[Functions]=======================================
   init() {
     forceAnimation = true;
-    return connectToServer();
   }
 
-  pushNodeREDscreen(ctx) async {
-    await LogicNodeREDScreen().init();
-    return Navigator.of(ctx).pushNamed(ScreenNodeRED.screenId);
-  }
-
-  pushNodeREDDashboardScreen(ctx) async {
-    await LogicNodeREDDashboardScreen().init();
-    return Navigator.of(ctx).pushNamed(ScreenNodeREDDashboard.screenId);
-  }
-
-  Future<bool> connectToServer() async {
-    return Apis.connect().then((_) {
-      if (apiConnectionProvider.data?.success == true) {
-        providerIsConnected.data = true;
-        return true;
-      } else {
-        providerIsConnected.data = false;
-        return false;
-      }
-    });
+  pushPageControlPanel(ctx) async {
+    await LogicControlPanelScreen().init();
+    return Navigator.of(ctx).pushNamed(ScreenControlPanel.screenId);
   }
 }

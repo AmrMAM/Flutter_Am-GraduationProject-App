@@ -1,8 +1,15 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : [AmMainButton] Widget                                                                              ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'package:flutter/material.dart';
 import '../statics/theme.dart';
 
-class MainButton extends StatelessWidget {
-  const MainButton({
+class AmMainButton extends StatelessWidget {
+  const AmMainButton({
     Key? key,
     required this.child,
     required this.onTap,

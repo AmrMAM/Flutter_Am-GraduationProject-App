@@ -1,4 +1,11 @@
-import 'dart:io';
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : Main File                                                                                          ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
+import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +23,7 @@ void main() {
   ]);
   if (Platform.isAndroid) {
     WebView.platform = AndroidWebView();
-  }
+  } else if (Platform.isWindows) {}
 
   runApp(const MyApp());
 }

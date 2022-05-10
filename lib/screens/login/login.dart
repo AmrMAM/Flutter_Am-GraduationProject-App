@@ -1,3 +1,10 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : Login Screen (UI)                                                                                  ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'package:am_industrial4/widgets/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -9,7 +16,7 @@ class ScreenLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedPage(
+    return AmAnimatedPage(
       minHeight: 0,
       uniqueId: screenId + '003',
       scaffold: Scaffold(
@@ -35,7 +42,7 @@ class ScreenLogin extends StatelessWidget {
               ),
             ),
             TextFormField(),
-            MainButton(onTap: () {}, child: const Text('Login')),
+            AmMainButton(onTap: () {}, child: const Text('Login')),
             Container(),
           ],
         ),

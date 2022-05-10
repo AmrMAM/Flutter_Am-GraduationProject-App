@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.am_industrial4">
    <application
-        android:label="am_industrial4"
+        android:label="Intelligent Manufacturing"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,8 +1,15 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : [amToastUI] Function                                                                               ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import '../statics/screen_size.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void toastUI({
+void amToastUI({
   required FToast fToast,
   required String txtMsg,
   Widget? icon,

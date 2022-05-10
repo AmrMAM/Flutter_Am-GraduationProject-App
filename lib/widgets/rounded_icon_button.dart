@@ -1,7 +1,14 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : [AmRoundedIconButton] Widget                                                                       ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'package:flutter/material.dart';
 
-class RoundedIconButton extends StatelessWidget {
-  const RoundedIconButton({
+class AmRoundedIconButton extends StatelessWidget {
+  const AmRoundedIconButton({
     Key? key,
     required this.icon,
     required this.press,

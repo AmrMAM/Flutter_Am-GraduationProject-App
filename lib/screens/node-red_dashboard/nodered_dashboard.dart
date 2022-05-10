@@ -1,10 +1,15 @@
-import 'package:am_industrial4/logic/screens/logic_node-red_dashboard.dart';
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : Node-RED Dashboard page (UI)                                                                       ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
+import 'package:am_industrial4/logic/screens/logic_nodered_dashboard.dart';
 import 'package:am_industrial4/widgets/animated_page.dart';
 import 'package:flutter/material.dart';
 import 'package:am_state/am_state.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
-import '/apis/api_providers.dart';
 
 class ScreenNodeREDDashboard extends StatelessWidget {
   const ScreenNodeREDDashboard({Key? key}) : super(key: key);
@@ -13,7 +18,7 @@ class ScreenNodeREDDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedPage(
+    return AmAnimatedPage(
       uniqueId: screenId,
       minHeight: 0,
       forceAnimation: LogicNodeREDDashboardScreen().forceAnimation |

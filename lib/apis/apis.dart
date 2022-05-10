@@ -1,5 +1,12 @@
+/*===================================================================================================================*/
+//*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
+//*** Title  : Apis File                                                                                          ***//
+//*** Date   : 11Mar2022                                                                                          ***//
+//*** Version: V05                                                                                                ***//
+/*===================================================================================================================*/
+
 import 'package:am_industrial4/apis/models/api_general_response.dart';
-import 'package:am_industrial4/apis/models/api_get_node-red.dart';
+import 'package:am_industrial4/apis/models/api_get_nodered.dart';
 
 import 'api_providers.dart';
 import 'api_sevices.dart' as api;
@@ -83,8 +90,8 @@ class Apis {
   }
 
   static Future<api.Res<ApiGeneralResponse>> checkNodeREDConnection(
-      String nodeRED_URL) async {
-    final _url = Uri.tryParse(nodeRED_URL + '/connect');
+      String nodeRedUrl) async {
+    final _url = Uri.tryParse(nodeRedUrl); //+ '/connect');
     final headers = <String, String>{
       'User-Agent': 'Amr_MAM',
       'Bypass-Tunnel-Reminder': 'true',
@@ -103,13 +110,14 @@ class Apis {
     }
 
     return api.client.get(_url, headers: headers).then((res) {
-      final data = jsonDecode(res.body) as Map<String, dynamic>;
+      final data = res.body; //jsonDecode(res.body) as Map<String, dynamic>;
 
       if (res.statusCode == 200) {
         apiCheckNodeREDConnectionProvider.data = ApiData<ApiGeneralResponse>(
-          success: true,
-          data: ApiGeneralResponse.fromMap(data),
-        );
+            success: true,
+            data: ApiGeneralResponse(
+                msg: 'Success', status: 200) //ApiGeneralResponse.fromMap(data),
+            );
       } else {
         apiCheckNodeREDConnectionProvider.data = _failureResponse;
       }
