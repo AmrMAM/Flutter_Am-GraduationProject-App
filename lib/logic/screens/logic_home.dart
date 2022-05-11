@@ -1,19 +1,12 @@
 /*===================================================================================================================*/
 //*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
 //*** Title  : Home Page (Logic)                                                                                  ***//
-//*** Date   : 11Mar2022                                                                                          ***//
-//*** Version: V05                                                                                                ***//
+//*** Date   : 11May2022                                                                                          ***//
+//*** Version: V06                                                                                                ***//
 /*===================================================================================================================*/
 
-import 'package:am_industrial4/apis/api_providers.dart';
-import 'package:am_industrial4/apis/apis.dart';
 import 'package:am_industrial4/logic/screens/logic_control_panel.dart';
-import 'package:am_industrial4/logic/screens/logic_nodered.dart';
-import 'package:am_industrial4/logic/screens/logic_nodered_dashboard.dart';
 import 'package:am_industrial4/screens/control_panel/control_panel.dart';
-import 'package:am_industrial4/screens/node-red/nodered.dart';
-import 'package:am_industrial4/screens/node-red_dashboard/nodered_dashboard.dart';
-import 'package:am_state/am_state.dart';
 import 'package:flutter/cupertino.dart';
 
 class LogicHomeScreen {

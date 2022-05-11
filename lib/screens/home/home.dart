@@ -1,11 +1,10 @@
 /*===================================================================================================================*/
 //*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
 //*** Title  : Home Page (UI)                                                                                     ***//
-//*** Date   : 11Mar2022                                                                                          ***//
-//*** Version: V05                                                                                                ***//
+//*** Date   : 11May2022                                                                                          ***//
+//*** Version: V06                                                                                                ***//
 /*===================================================================================================================*/
 
-import 'package:am_industrial4/logic/screens/logic_control_panel.dart';
 import 'package:am_industrial4/logic/screens/logic_home.dart';
 import 'package:am_industrial4/widgets/animated_page.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class ScreenHome extends StatelessWidget {
           (LogicHomeScreen().forceAnimation = false),
       scaffold: Scaffold(
         appBar: AppBar(
-          title: const Text('Inteligent Manifacturing using Industry 4.0'),
+          title: const Text('Intelligent Manifacturing using Industry 4.0'),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,

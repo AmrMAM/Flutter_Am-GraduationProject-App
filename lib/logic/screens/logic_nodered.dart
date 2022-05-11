@@ -1,8 +1,8 @@
 /*===================================================================================================================*/
 //*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
 //*** Title  : Node-RED Page (Logic)                                                                              ***//
-//*** Date   : 10May2022                                                                                          ***//
-//*** Version: V06                                                                                                ***//
+//*** Date   : 11May2022                                                                                          ***//
+//*** Version: V07                                                                                                ***//
 /*===================================================================================================================*/
 
 import 'package:am_industrial4/apis/api_providers.dart';
@@ -17,14 +17,29 @@ class LogicNodeREDScreen {
 
   //==========================[Variables]=======================================
   bool forceAnimation = true;
-  String get nodeREDURL => apiGetNodeREDProvider.data?.data?.value ?? '';
+  bool _remoteOrLocal = true;
+  String _localURL = "";
+  String get nodeREDURL {
+    print(_localURL);
+    if (_remoteOrLocal) {
+      return apiGetNodeREDProvider.data?.data?.value ?? '';
+    } else {
+      return _localURL;
+    }
+  }
 
   //==========================[Providers]=======================================
   /// check is made before not used
   final providerNodeREDisOnline = AmDataProvider<bool>(initialData: true);
 
   //==========================[Functions]=======================================
-  init() {
+  init({required bool remoteOrLocal, String localURL = ""}) {
     forceAnimation = true;
+    if (remoteOrLocal) {
+      _remoteOrLocal = true;
+    } else {
+      _remoteOrLocal = false;
+      _localURL = localURL;
+    }
   }
 }

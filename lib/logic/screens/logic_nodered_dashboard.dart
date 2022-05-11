@@ -17,15 +17,29 @@ class LogicNodeREDDashboardScreen {
 
   //==========================[Variables]=======================================
   bool forceAnimation = true;
-  String get dashboardURL =>
-      (apiGetNodeREDProvider.data?.data?.value ?? '') + '/ui';
+  bool _remoteOrLocal = true;
+  String _localURL = "";
+
+  String get dashboardURL {
+    if (_remoteOrLocal) {
+      return (apiGetNodeREDProvider.data?.data?.value ?? '') + '/ui';
+    } else {
+      return _localURL + '/ui';
+    }
+  }
 
   //==========================[Providers]=======================================
   /// check made before not used
   final providerNodeREDisOnline = AmDataProvider<bool>(initialData: true);
 
   //==========================[Functions]=======================================
-  init() {
+  init({required bool remoteOrLocal, String localURL = ""}) {
     forceAnimation = true;
+    if (remoteOrLocal) {
+      _remoteOrLocal = true;
+    } else {
+      _remoteOrLocal = false;
+      _localURL = localURL;
+    }
   }
 }

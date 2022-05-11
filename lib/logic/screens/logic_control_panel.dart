@@ -1,8 +1,8 @@
 /*===================================================================================================================*/
 //*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
 //*** Title  : Control Panel Page (Logic)                                                                         ***//
-//*** Date   : 10May2022                                                                                          ***//
-//*** Version: V01                                                                                                ***//
+//*** Date   : 11May2022                                                                                          ***//
+//*** Version: V02                                                                                                ***//
 /*===================================================================================================================*/
 
 import 'package:am_industrial4/apis/api_providers.dart';
@@ -24,29 +24,44 @@ class LogicControlPanelScreen {
   LogicControlPanelScreen._internal();
 
   //==========================[Variables]=======================================
-  bool forceAnimation = true;
+  bool _forceAnimation = true;
+  String ip = "";
 
   //==========================[Providers]=======================================
   final providerIsConnected = AmDataProvider<bool>(initialData: false);
   final providerIsConnectedNodeRED = AmDataProvider<bool>(initialData: false);
-  final providerRemoteOrLocal = AmDataProvider<bool>(initialData: false);
+  final providerRemoteOrLocal = AmDataProvider<bool>(initialData: true);
+  final providerCorrectIP = AmDataProvider<bool>(initialData: false);
 
   //==========================[Functions]=======================================
   init() {
-    forceAnimation = true;
+    _forceAnimation = true;
     // return connectToServer();
   }
 
-  pressRemoteServer() => providerRemoteOrLocal.data = true;
-  pressLocalNetWork() => providerRemoteOrLocal.data = false;
+  pressRemoteServer() {
+    providerIsConnectedNodeRED.data = false;
+    providerRemoteOrLocal.data = true;
+  }
+
+  pressLocalNetWork() {
+    providerIsConnectedNodeRED.data = false;
+    providerRemoteOrLocal.data = false;
+  }
 
   pushNodeREDscreen(ctx) async {
-    await LogicNodeREDScreen().init();
+    await LogicNodeREDScreen().init(
+      remoteOrLocal: providerRemoteOrLocal.data!,
+      localURL: localURL,
+    );
     return Navigator.of(ctx).pushNamed(ScreenNodeRED.screenId);
   }
 
   pushNodeREDDashboardScreen(ctx) async {
-    await LogicNodeREDDashboardScreen().init();
+    await LogicNodeREDDashboardScreen().init(
+      remoteOrLocal: providerRemoteOrLocal.data!,
+      localURL: localURL,
+    );
     return Navigator.of(ctx).pushNamed(ScreenNodeREDDashboard.screenId);
   }
 
@@ -90,6 +105,20 @@ class LogicControlPanelScreen {
     });
   }
 
+  Future<bool> checkNodeREDconnectionLocal() async {
+    providerIsConnectedNodeRED.data = null;
+    String _url = 'http://' + ip + ':1880/';
+    return Apis.checkNodeREDConnection(_url).then((_r02) {
+      if (_r02.responseStatus == ResponseStatus.successful) {
+        providerIsConnectedNodeRED.data = true;
+        return true;
+      } else {
+        providerIsConnectedNodeRED.data = false;
+        return true;
+      }
+    });
+  }
+
   String get connectionStateNodeRED {
     if (providerIsConnectedNodeRED.data == true) {
       return 'Successfully Connected';
@@ -99,4 +128,8 @@ class LogicControlPanelScreen {
     }
     return 'Connecting...';
   }
+
+  bool get forceAnimation => (_forceAnimation = false) | _forceAnimation;
+
+  String get localURL => 'http://' + ip + ':1880';
 }

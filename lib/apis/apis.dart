@@ -110,7 +110,7 @@ class Apis {
     }
 
     return api.client.get(_url, headers: headers).then((res) {
-      final data = res.body; //jsonDecode(res.body) as Map<String, dynamic>;
+      // final data = res.body; //jsonDecode(res.body) as Map<String, dynamic>;
 
       if (res.statusCode == 200) {
         apiCheckNodeREDConnectionProvider.data = ApiData<ApiGeneralResponse>(
