@@ -1,12 +1,14 @@
 /*===================================================================================================================*/
 //*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
 //*** Title  : Home Page (Logic)                                                                                  ***//
-//*** Date   : 11May2022                                                                                          ***//
-//*** Version: V06                                                                                                ***//
+//*** Date   : 08Jul2022                                                                                          ***//
+//*** Version: V07                                                                                                ***//
 /*===================================================================================================================*/
 
 import 'package:am_industrial4/logic/screens/logic_control_panel.dart';
+import 'package:am_industrial4/logic/screens/logic_team_members.dart';
 import 'package:am_industrial4/screens/control_panel/control_panel.dart';
+import 'package:am_industrial4/screens/team_members/team_members.dart';
 import 'package:flutter/cupertino.dart';
 
 class LogicHomeScreen {
@@ -29,5 +31,10 @@ class LogicHomeScreen {
   pushPageControlPanel(ctx) async {
     await LogicControlPanelScreen().init();
     return Navigator.of(ctx).pushNamed(ScreenControlPanel.screenId);
+  }
+
+  pushPageTeamMembers(ctx) async {
+    await LogicTeamMembersScreen().init();
+    return Navigator.of(ctx).pushNamed(ScreenTeamMembers.screenId);
   }
 }

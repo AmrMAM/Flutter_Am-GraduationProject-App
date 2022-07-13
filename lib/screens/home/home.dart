@@ -82,7 +82,7 @@ class ScreenHome extends StatelessWidget {
                 buttonStyle: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.pink[800]),
                 ),
-                onTab: () {},
+                onTab: () => LogicHomeScreen().pushPageTeamMembers(context),
               ),
             ),
             const SizedBox(height: 20),

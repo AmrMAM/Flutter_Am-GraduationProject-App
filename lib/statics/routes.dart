@@ -9,6 +9,7 @@ import 'package:am_industrial4/screens/control_panel/control_panel.dart';
 import 'package:am_industrial4/screens/home/home.dart';
 import 'package:am_industrial4/screens/node-red/nodered.dart';
 import 'package:am_industrial4/screens/node-red_dashboard/nodered_dashboard.dart';
+import 'package:am_industrial4/screens/team_members/team_members.dart';
 
 import '../screens/splash/splash.dart';
 import '../screens/login/login.dart';
@@ -22,4 +23,5 @@ var routes = <String, WidgetBuilder>{
   ScreenNodeRED.screenId: (context) => const ScreenNodeRED(),
   ScreenNodeREDDashboard.screenId: (context) => const ScreenNodeREDDashboard(),
   ScreenControlPanel.screenId: (context) => const ScreenControlPanel(),
+  ScreenTeamMembers.screenId: (context) => const ScreenTeamMembers(),
 };
