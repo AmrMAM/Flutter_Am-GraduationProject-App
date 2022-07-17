@@ -26,7 +26,9 @@ class ScreenControlPanel extends StatelessWidget {
       minHeight: 0,
       forceAnimation: logic.forceAnimation,
       scaffold: Scaffold(
+        backgroundColor: Color.fromARGB(255, 211, 213, 255),
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 234, 231, 255),
           title: const Text('Control Panel Page'),
         ),
         body: AmRefreshWidget<bool>(

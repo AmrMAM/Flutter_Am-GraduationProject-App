@@ -156,7 +156,7 @@ class ImageSection extends StatelessWidget {
                       softWrap: true,
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
+                          .headline6!
                           .copyWith(color: Colors.white),
                     ),
                   ),

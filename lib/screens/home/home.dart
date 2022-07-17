@@ -5,7 +5,9 @@
 //*** Version: V06                                                                                                ***//
 /*===================================================================================================================*/
 
+import 'package:am_industrial4/components/check_latest_version.dart';
 import 'package:am_industrial4/logic/screens/logic_home.dart';
+import 'package:am_industrial4/statics/screen_size.dart';
 import 'package:am_industrial4/widgets/animated_page.dart';
 import 'package:flutter/material.dart';
 import 'package:am_state/am_state.dart';
@@ -29,72 +31,91 @@ class ScreenHome extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Intelligent Manifacturing using Industry 4.0'),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const Spacer(),
-            Center(
-              child: ButtonWithIcon(
-                text: 'Project Summary',
-                icon: const Icon(Icons.summarize),
-                buttonStyle: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green[800]),
+        body: Stack(
+          children: [
+            Image.asset(
+              'assets/images/home_background.png',
+              fit: BoxFit.cover,
+              alignment: Alignment.topRight,
+              opacity: AlwaysStoppedAnimation(0.15),
+              height: ScreenSize.screenHeight,
+              width: ScreenSize.screenWidth,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Spacer(),
+                Center(
+                  child: ButtonWithIcon(
+                    text: 'Project Summary',
+                    icon: const Icon(Icons.summarize),
+                    buttonStyle: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.green[800]),
+                    ),
+                    onTab: () {},
+                  ),
                 ),
-                onTab: () {},
-              ),
-            ),
-            const SizedBox(height: 20),
-            Center(
-              child: ButtonWithIcon(
-                text: 'Project Documentation',
-                icon: const Icon(Icons.book),
-                onTab: () {},
-              ),
-            ),
-            const SizedBox(height: 20),
-            Center(
-              child: ButtonWithIcon(
-                text: 'Control Panel',
-                icon: const Icon(Icons.queue_play_next_outlined),
-                buttonStyle: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red[900]),
+                const SizedBox(height: 20),
+                Center(
+                  child: ButtonWithIcon(
+                    text: 'Project Documentation',
+                    icon: const Icon(Icons.book),
+                    onTab: () {},
+                  ),
                 ),
-                onTab: () => LogicHomeScreen().pushPageControlPanel(context),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Center(
-              child: ButtonWithIcon(
-                text: 'Project Instructors',
-                icon: const Icon(Icons.people),
-                buttonStyle: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.brown[800]),
+                const SizedBox(height: 20),
+                Center(
+                  child: ButtonWithIcon(
+                    text: 'Control Panel',
+                    icon: const Icon(Icons.queue_play_next_outlined),
+                    buttonStyle: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.red[900]),
+                    ),
+                    onTab: () =>
+                        LogicHomeScreen().pushPageControlPanel(context),
+                  ),
                 ),
-                onTab: () {},
-              ),
-            ),
-            const SizedBox(height: 20),
-            Center(
-              child: ButtonWithIcon(
-                text: 'Team Members',
-                icon: const Icon(Icons.people),
-                buttonStyle: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.pink[800]),
+                const SizedBox(height: 20),
+                Center(
+                  child: ButtonWithIcon(
+                    text: 'Project Instructors',
+                    icon: const Icon(Icons.people),
+                    buttonStyle: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.brown[800]),
+                    ),
+                    onTab: () =>
+                        LogicHomeScreen().pushPageProjectInstructors(context),
+                  ),
                 ),
-                onTab: () => LogicHomeScreen().pushPageTeamMembers(context),
-              ),
+                const SizedBox(height: 20),
+                Center(
+                  child: ButtonWithIcon(
+                    text: 'Team Members',
+                    icon: const Icon(Icons.people),
+                    buttonStyle: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.pink[800]),
+                    ),
+                    onTab: () => LogicHomeScreen().pushPageTeamMembers(context),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Center(
+                  child: ButtonWithIcon(
+                    text: 'Ask Question',
+                    icon: const Icon(Icons.quick_contacts_dialer_outlined),
+                    onTab: () => LogicHomeScreen().pushPageAskQuestion(context),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                CheckLatestVersion(onTap: (() {})),
+                const Spacer(),
+              ],
             ),
-            const SizedBox(height: 20),
-            Center(
-              child: ButtonWithIcon(
-                text: 'Ask Question',
-                icon: const Icon(Icons.quick_contacts_dialer_outlined),
-                onTab: () {},
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Spacer(),
           ],
         ),
       ),

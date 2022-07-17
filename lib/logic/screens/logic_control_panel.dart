@@ -129,7 +129,7 @@ class LogicControlPanelScreen {
     return 'Connecting...';
   }
 
-  bool get forceAnimation => (_forceAnimation = false) | _forceAnimation;
+  bool get forceAnimation => _forceAnimation | (_forceAnimation = false);
 
   String get localURL => 'http://' + ip + ':1880';
 }

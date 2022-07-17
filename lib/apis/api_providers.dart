@@ -40,3 +40,14 @@ final apiCheckNodeREDConnectionProvider =
   ),
   providerId: 'apiCheckNodeREDConnectionProvider0001',
 );
+
+final apiAskQuestionProvider = AmDataProvider<ApiData<ApiGeneralResponse>>(
+  initialData: ApiData(
+    success: null,
+    data: ApiGeneralResponse(
+      msg: 'Failed to send the Message.',
+      status: 403,
+    ),
+  ),
+  providerId: 'apiAskQuestionProvider0001',
+);

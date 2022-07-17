@@ -10,6 +10,7 @@ import 'package:am_industrial4/screens/home/home.dart';
 import 'package:am_state/am_state.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../statics/theme.dart';
 import '../../widgets/animated_page.dart';
@@ -49,6 +50,7 @@ class _ScreenSplashState extends State<ScreenSplash>
   @override
   Widget build(BuildContext context) {
     ScreenSize().init(context);
+    FToast().init(context);
 
     return AmAnimatedPage(
       uniqueId: ScreenSplash.screenId + '002',
@@ -127,5 +129,11 @@ class _ScreenSplashState extends State<ScreenSplash>
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _animationCtrl.dispose();
+    super.dispose();
   }
 }

@@ -11,10 +11,11 @@ class ScreenTeamMembers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final logic = LogicTeamMembersScreen();
     return AmAnimatedPage(
       uniqueId: screenId,
       minHeight: 0,
-      forceAnimation: LogicTeamMembersScreen().forceAnimation,
+      forceAnimation: logic.forceAnimation,
       scaffold: Scaffold(
         backgroundColor: const Color.fromARGB(255, 236, 253, 255),
         appBar: AppBar(
@@ -34,32 +35,58 @@ class ScreenTeamMembers extends StatelessWidget {
         body: GridView.count(
           crossAxisCount: 2,
           childAspectRatio: 0.70,
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(8),
           children: [
             PersonCard(
-              description: 'Project Manager + SCADA',
+              description: 'Project Manager + SCADA + PLC code + Panels',
               title: 'Otafy',
-              fullName: 'Mohamed Mostafa Otafy',
-              onTap: () {},
+              imageUrl: 'assets/images/otafy.jpg',
+              fullName: 'Mohamed Mustafa Otafy Ahmed',
+              onTap: () => logic.pushOtafyCvPage(context),
             ),
             PersonCard(
               // description: 'MobileApp + Servers + Packing Sys + Am_RED_Nodes',
-              description: 'Packing System',
-              fullName: 'Amr Mostafa Abbas Mahmoud',
+              description:
+                  'Packing System + Mobile App & Servers + AM_RED_Channel + Public-RED App + Panels',
+              fullName: 'Amr Mostafa Abbas',
               title: 'Amr Mostafa',
               imageUrl: 'assets/images/amr.jpg',
-              onTap: () {},
+              onTap: () => logic.pushAmrCvPage(context),
             ),
             PersonCard(
-              description: 'Node-RED + تعب معاناجامد',
-              fullName: "Mo'men Mohamed",
+              description: 'Node-RED + PLC Code + Procurement + Panels',
+              fullName: "Mo’men Mohamed Mahmoud",
               title: "Mo'men",
-              onTap: () {},
+              imageUrl: 'assets/images/momen.jpg',
+              onTap: () => logic.pushMomenCvPage(context),
             ),
             PersonCard(
-              description: 'Node-RED + تعب معاناجامد',
-              fullName: "Mo'men Mohamed",
-              title: "Mo'men",
+              description: 'Leakage system + HMI',
+              fullName: "Ahmed Abdel Wahab Mohmed Hawash",
+              title: "Ahmed Hawash",
+              imageUrl: 'assets/images/7wash.jpg',
+              onTap: () => logic.push7washCvPage(context),
+            ),
+            PersonCard(
+              description: 'Documentation + PLC code + Panels',
+              fullName: "Abdelrahman Ahmed Thabet",
+              title: "Abdelrahman Thabet",
+              imageUrl: 'assets/images/thabet.jpg',
+              onTap: () => logic.pushThabetCvPage(context),
+            ),
+            PersonCard(
+              description:
+                  'Computer vision + Object  detection + Deep learning',
+              fullName: "KAREEM OSAMA ABDELHAKIEM Aly",
+              title: "Kareem Osama",
+              imageUrl: 'assets/images/kareem.jpg',
+              onTap: () => logic.pushKareemCvPage(context),
+            ),
+            PersonCard(
+              description: 'filling system',
+              fullName: "Ahmed Abd-Elrheem",
+              title: "Ahmed Abd-Elrheem",
               onTap: () {},
             ),
           ],

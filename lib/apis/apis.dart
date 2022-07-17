@@ -5,6 +5,7 @@
 //*** Version: V05                                                                                                ***//
 /*===================================================================================================================*/
 
+import 'package:am_industrial4/apis/models/api_ask_question.dart';
 import 'package:am_industrial4/apis/models/api_general_response.dart';
 import 'package:am_industrial4/apis/models/api_get_nodered.dart';
 
@@ -131,6 +132,56 @@ class Apis {
     }).catchError((e) {
       print(e);
       apiCheckNodeREDConnectionProvider.data = _failureResponse;
+      return api.Res<ApiGeneralResponse>(
+        data: _failureResponse.data,
+        responseStatus: api.ResponseStatus.failed,
+      );
+    });
+  }
+
+  static Future<api.Res<ApiGeneralResponse>> askQuestion(
+      ApiAskQuestionModel questionModel) async {
+    final _url = api.url(path: '/ask_question');
+
+    final _failureResponse = ApiData(
+      success: false,
+      data: ApiGeneralResponse(
+        status: 404,
+        msg: 'Failed to send the Message.',
+      ),
+    );
+
+    final headers = <String, String>{
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'User-Agent': 'Amr_MAM',
+    };
+
+    return api.client
+        .post(_url, headers: headers, body: questionModel.toMap())
+        .then((res) {
+      // final data = jsonDecode(res.body) as Map<String, dynamic>;
+
+      if (res.statusCode == 200) {
+        apiAskQuestionProvider.data = ApiData<ApiGeneralResponse>(
+          success: true,
+          data: ApiGeneralResponse(
+            status: 200,
+            msg: 'Successfully send the message',
+          ),
+        );
+      } else {
+        apiAskQuestionProvider.data = _failureResponse;
+      }
+
+      return api.Res<ApiGeneralResponse>(
+        data: apiAskQuestionProvider.data!.data,
+        responseStatus: res.statusCode == 200
+            ? api.ResponseStatus.successful
+            : api.ResponseStatus.failed,
+      );
+    }).catchError((e) {
+      print(e);
+      apiAskQuestionProvider.data = _failureResponse;
       return api.Res<ApiGeneralResponse>(
         data: _failureResponse.data,
         responseStatus: api.ResponseStatus.failed,

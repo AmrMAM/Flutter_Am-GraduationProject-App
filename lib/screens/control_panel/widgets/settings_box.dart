@@ -26,18 +26,26 @@ class SettingsBox extends StatelessWidget {
     return AmRefreshWidget<bool>(
       amDataProvider: logic.providerIsConnected,
       builder: (ctx, isConnected) {
-        return AnimatedContainer(
-          duration: const Duration(seconds: 1),
-          curve: Curves.bounceInOut,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Colors.white,
-          ),
+        return Container(
+          // duration: const Duration(seconds: 1),
+          // curve: Curves.bounceInOut,
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(15),
+          //   color: Colors.white,
+          // ),
           width: 350,
           height: 200,
-          child: remoteOrLocal == true
-              ? SettingRemoteConnection(logic: logic, isConnected: isConnected)
-              : SettingLocalConnection(logic: logic, isConnected: isConnected),
+          child: Card(
+            elevation: 6,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: remoteOrLocal == true
+                ? SettingRemoteConnection(
+                    logic: logic, isConnected: isConnected)
+                : SettingLocalConnection(
+                    logic: logic, isConnected: isConnected),
+          ),
         );
       },
     );
