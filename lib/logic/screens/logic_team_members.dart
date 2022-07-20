@@ -75,6 +75,14 @@ class LogicTeamMembersScreen {
     Navigator.of(ctx).pushNamed(ScreenPDFViewer.screenId);
   }
 
+  pushAbdelriheemCvPage(ctx) {
+    LogicPdfViewerScreen().init(
+      pdfAssetName: 'cv_abdelriheem.pdf',
+      pageTitle: 'Ahmed Abd-Elrheem',
+    );
+    Navigator.of(ctx).pushNamed(ScreenPDFViewer.screenId);
+  }
+
   //==========================[Properties]======================================
   bool get forceAnimation => _forceAnimation | (_forceAnimation = false);
 }

@@ -40,11 +40,13 @@ class ScreenProjectInstructors extends StatelessWidget {
               description: 'Electrical Power Engineering Professor',
               title: 'Dr.Elnaggar',
               fullName: 'Dr.Mahmoud Elnaggar',
+              imageUrl: 'assets/images/elnaggar.jpg',
             ),
             PersonCard(
               description: 'Electrical Power Engineering Professor',
               title: 'Dr.Khaled',
               fullName: 'Dr.Khaled El-Metwally',
+              imageUrl: 'assets/images/khalid.jpg',
             ),
             PersonCard(
               description: 'Schneider Sponsor',

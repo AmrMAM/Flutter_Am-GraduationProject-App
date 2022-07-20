@@ -84,10 +84,12 @@ class ScreenTeamMembers extends StatelessWidget {
               onTap: () => logic.pushKareemCvPage(context),
             ),
             PersonCard(
-              description: 'filling system',
+              description:
+                  'Communication drives; plc code; filling system and wiring',
               fullName: "Ahmed Abd-Elrheem",
               title: "Ahmed Abd-Elrheem",
-              onTap: () {},
+              imageUrl: 'assets/images/abdelrheem.jpg',
+              onTap: () => logic.pushAbdelriheemCvPage(context),
             ),
           ],
         ),
