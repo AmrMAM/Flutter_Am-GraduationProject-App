@@ -57,7 +57,7 @@ class ScreenHome extends StatelessWidget {
                       backgroundColor:
                           MaterialStateProperty.all(Colors.green[800]),
                     ),
-                    onTab: () {},
+                    onTab: () => LogicHomeScreen().pushPageSummary(context),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -65,7 +65,8 @@ class ScreenHome extends StatelessWidget {
                   child: ButtonWithIcon(
                     text: 'Project Documentation',
                     icon: const Icon(Icons.book),
-                    onTab: () {},
+                    onTab: () =>
+                        LogicHomeScreen().pushPageGraduationBook(context),
                   ),
                 ),
                 const SizedBox(height: 20),

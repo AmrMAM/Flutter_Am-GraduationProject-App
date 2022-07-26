@@ -27,10 +27,15 @@ Future initializeApp() async {
         Timer(Duration(seconds: 3), () {
           if (apiGetProgramInfoProvider.data!.success == true) {
             launch.launchUrl(
-                Uri.parse(apiGetProgramInfoProvider.data!.data!.programURL));
+              Uri.parse(apiGetProgramInfoProvider.data!.data!.programURL),
+              mode: launch.LaunchMode.externalApplication,
+            );
           }
         });
       }
     } else {}
   });
+
+  ///to make the server alive;
+  Timer.periodic(Duration(seconds: 30), (timer) => Apis.connect());
 }

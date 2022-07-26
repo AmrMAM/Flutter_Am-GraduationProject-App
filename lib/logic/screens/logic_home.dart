@@ -1,8 +1,8 @@
 /*===================================================================================================================*/
 //*** Author : Amr Mostafa         (Amr_MAM)                                                                      ***//
 //*** Title  : Home Page (Logic)                                                                                  ***//
-//*** Date   : 08Jul2022                                                                                          ***//
-//*** Version: V07                                                                                                ***//
+//*** Date   : 26Jul2022                                                                                          ***//
+//*** Version: V08                                                                                               ***//
 /*===================================================================================================================*/
 
 import 'dart:async';
@@ -22,8 +22,10 @@ import 'package:url_launcher/url_launcher.dart' as launch;
 
 import '../../apis/api_providers.dart';
 import '../../apis/apis.dart';
+import '../../screens/pdf_viewer/pdf_viewer.dart';
 import '../../statics/constants.dart';
 import '../../widgets/toast.dart';
+import 'logic_pdf_viewer.dart';
 
 class LogicHomeScreen {
   static final _instance = LogicHomeScreen._internal();
@@ -41,6 +43,22 @@ class LogicHomeScreen {
   init() {
     forceAnimation = true;
     initializeApp();
+  }
+
+  pushPageSummary(ctx) {
+    LogicPdfViewerScreen().init(
+      pdfAssetName: 'doc_summ.pdf',
+      pageTitle: 'Final Presentation',
+    );
+    Navigator.of(ctx).pushNamed(ScreenPDFViewer.screenId);
+  }
+
+  pushPageGraduationBook(ctx) {
+    LogicPdfViewerScreen().init(
+      pdfAssetName: 'doc_book.pdf',
+      pageTitle: 'Graduation Book',
+    );
+    Navigator.of(ctx).pushNamed(ScreenPDFViewer.screenId);
   }
 
   pushPageControlPanel(ctx) async {
@@ -75,8 +93,10 @@ class LogicHomeScreen {
             );
             Timer(Duration(seconds: 3), () {
               if (apiGetProgramInfoProvider.data!.success == true) {
-                launch.launchUrl(Uri.parse(
-                    apiGetProgramInfoProvider.data!.data!.programURL));
+                launch.launchUrl(
+                  Uri.parse(apiGetProgramInfoProvider.data!.data!.programURL),
+                  mode: launch.LaunchMode.externalApplication,
+                );
               }
             });
           } else {
@@ -93,7 +113,9 @@ class LogicHomeScreen {
           Timer(Duration(seconds: 3), () {
             if (apiGetProgramInfoProvider.data!.success == true) {
               launch.launchUrl(
-                  Uri.parse(apiGetProgramInfoProvider.data!.data!.programURL));
+                Uri.parse(apiGetProgramInfoProvider.data!.data!.programURL),
+                mode: launch.LaunchMode.externalApplication,
+              );
             }
           });
         }
