@@ -11,6 +11,7 @@ import 'package:am_industrial4/statics/screen_size.dart';
 import 'package:am_industrial4/widgets/animated_page.dart';
 import 'package:flutter/material.dart';
 import 'package:am_state/am_state.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../widgets/button_with_icon.dart';
 
 final resProvider = AmDataProvider<String>(initialData: '');
@@ -22,6 +23,8 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FToast().init(context);
+
     return AmAnimatedPage(
       uniqueId: screenId,
       minHeight: 0,
@@ -112,7 +115,7 @@ class ScreenHome extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                CheckLatestVersion(onTap: (() {})),
+                CheckLatestVersion(onTap: LogicHomeScreen().checkUpdates),
                 const Spacer(),
               ],
             ),

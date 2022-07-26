@@ -13,7 +13,7 @@ class ScreenAskQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logic = LogicAskQuestionScreen();
-    FToast().init(context);
+    // FToast().init(context);
     return AmAnimatedPage(
       uniqueId: screenId,
       minHeight: 0,

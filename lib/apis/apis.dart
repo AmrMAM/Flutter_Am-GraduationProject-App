@@ -6,8 +6,10 @@
 /*===================================================================================================================*/
 
 import 'package:am_industrial4/apis/models/api_ask_question.dart';
+import 'package:am_industrial4/apis/models/api_check_app.dart';
 import 'package:am_industrial4/apis/models/api_general_response.dart';
 import 'package:am_industrial4/apis/models/api_get_nodered.dart';
+import 'package:am_industrial4/apis/models/api_prog_info.dart';
 
 import 'api_providers.dart';
 import 'api_sevices.dart' as api;
@@ -183,6 +185,84 @@ class Apis {
       print(e);
       apiAskQuestionProvider.data = _failureResponse;
       return api.Res<ApiGeneralResponse>(
+        data: _failureResponse.data,
+        responseStatus: api.ResponseStatus.failed,
+      );
+    });
+  }
+
+  static Future<api.Res<ApiProgInfoModel>> getProgramInfo() async {
+    final _url = api.url(path: '/get-prog-info');
+
+    final _failureResponse = ApiData<ApiProgInfoModel>(
+      success: false,
+      data: null,
+    );
+
+    return api.client.get(_url).then((res) {
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+
+      if (res.statusCode == 200) {
+        apiGetProgramInfoProvider.data = ApiData<ApiProgInfoModel>(
+          success: true,
+          data: ApiProgInfoModel.fromMap(data['msg']),
+        );
+      } else {
+        apiGetProgramInfoProvider.data = _failureResponse;
+      }
+
+      return api.Res<ApiProgInfoModel>(
+        data: apiGetProgramInfoProvider.data!.data,
+        responseStatus: res.statusCode == 200
+            ? api.ResponseStatus.successful
+            : api.ResponseStatus.failed,
+      );
+    }).catchError((e) {
+      print(e);
+      apiGetProgramInfoProvider.data = _failureResponse;
+      return api.Res<ApiProgInfoModel>(
+        data: _failureResponse.data,
+        responseStatus: api.ResponseStatus.failed,
+      );
+    });
+  }
+
+  static Future<api.Res<ApiCheckAppModel>> checkApp(double appVersion) async {
+    final _url =
+        api.url(path: '/checkApp', query: {'version': appVersion.toString()});
+
+    final _failureResponse = ApiData<ApiCheckAppModel>(
+      success: false,
+      data: null,
+    );
+
+    final headers = <String, String>{
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      'User-Agent': 'Amr_MAM',
+    };
+
+    return api.client.get(_url, headers: headers).then((res) {
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+
+      if (res.statusCode == 200) {
+        apiCheckAppProvider.data = ApiData<ApiCheckAppModel>(
+          success: true,
+          data: ApiCheckAppModel.fromMap(data['value'] as Map<String, dynamic>),
+        );
+      } else {
+        apiCheckAppProvider.data = _failureResponse;
+      }
+
+      return api.Res<ApiCheckAppModel>(
+        data: apiCheckAppProvider.data!.data,
+        responseStatus: res.statusCode == 200
+            ? api.ResponseStatus.successful
+            : api.ResponseStatus.failed,
+      );
+    }).catchError((e) {
+      print(e);
+      apiCheckAppProvider.data = _failureResponse;
+      return api.Res<ApiCheckAppModel>(
         data: _failureResponse.data,
         responseStatus: api.ResponseStatus.failed,
       );

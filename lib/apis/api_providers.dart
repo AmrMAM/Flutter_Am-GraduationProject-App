@@ -5,8 +5,10 @@
 //*** Version: V05                                                                                                ***//
 /*===================================================================================================================*/
 
+import 'package:am_industrial4/apis/models/api_check_app.dart';
 import 'package:am_industrial4/apis/models/api_general_response.dart';
 import 'package:am_industrial4/apis/models/api_get_nodered.dart';
+import 'package:am_industrial4/apis/models/api_prog_info.dart';
 import 'package:am_state/am_state.dart';
 
 class ApiData<T> {
@@ -50,4 +52,20 @@ final apiAskQuestionProvider = AmDataProvider<ApiData<ApiGeneralResponse>>(
     ),
   ),
   providerId: 'apiAskQuestionProvider0001',
+);
+
+final apiGetProgramInfoProvider = AmDataProvider<ApiData<ApiProgInfoModel>>(
+  initialData: ApiData(
+    success: null,
+    data: null,
+  ),
+  providerId: 'apiGetProgramInfoProvider0001',
+);
+
+final apiCheckAppProvider = AmDataProvider<ApiData<ApiCheckAppModel>>(
+  initialData: ApiData(
+    success: null,
+    data: null,
+  ),
+  providerId: 'apiCheckAppProvider0001',
 );

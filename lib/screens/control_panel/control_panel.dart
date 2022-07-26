@@ -8,6 +8,7 @@
 import 'package:am_industrial4/logic/screens/logic_control_panel.dart';
 import 'package:am_state/am_state.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../widgets/animated_page.dart';
 import './widgets/settings_box.dart';
@@ -20,6 +21,7 @@ class ScreenControlPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // FToast().init(context);
     final logic = LogicControlPanelScreen();
     return AmAnimatedPage(
       uniqueId: screenId,

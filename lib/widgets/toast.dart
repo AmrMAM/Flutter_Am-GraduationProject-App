@@ -38,6 +38,7 @@ void amToastUI({
               textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
               // softWrap: true,
               // maxLines: 2,

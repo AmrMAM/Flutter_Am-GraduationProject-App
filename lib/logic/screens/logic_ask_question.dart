@@ -75,5 +75,9 @@ class LogicAskQuestionScreen {
   }
 
   //==========================[Properties]======================================
-  bool get forceAnimation => _forceAnimation | (_forceAnimation = false);
+  bool get forceAnimation {
+    final tmp = _forceAnimation;
+    _forceAnimation = false;
+    return tmp;
+  }
 }
